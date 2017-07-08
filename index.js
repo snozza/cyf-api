@@ -43,7 +43,7 @@ app.post('/chatroom', (req, res, next) => {
     return res.status(400).send(`Can't send an empty message!`);
   }
   msgs[id] = msg;
-  res.send(`The following message has been sent to chat ID ${id}: ${msg}`);
+  res.send(`Message sent to ID ${id}: ${msg}`);
 });
 
 app.delete('/chatroom', (req, res, next) => {

@@ -6,6 +6,10 @@
 
   function sendTalk(e) {
     e.preventDefault();
+    const params = msgInput.value;
+    if (!params) {
+      return;
+    }
     const request = new XMLHttpRequest();
 
     request.onreadystatechange = () => {
@@ -13,14 +17,13 @@
         if (request.status === 200) {
           textBox.innerText = request.responseText;
         } else {
-          console.log(request);
           textBox.innerText = `Something went wrong with your request:
-          ${request.status} ${request.statusText}<br>${request.responseText}`;
+          ${request.status} ${request.statusText}
+          ${request.responseText}`;
         }
       }
     }
     const url = '/chatroom?id=cyf';
-    const params = msgInput.value;
     request.open('POST', url, true);
     request.setRequestHeader('Content-Type', 'text/plain');
     request.send(params);

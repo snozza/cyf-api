@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
     <meta charset="UTF-8">
     <title>Andrew's Chat</title>
   </head>
 
   <body>
-    <section class="intro">
-      <h2>Standard HTML Form - will redirect</h2>
-      <form action="/chatroom?id=cyf" method="POST">
-        Say something to Andrew<br>
-        <input type="text" name="message"><br>
-        <input type="submit" value="Submit via standard HTTP POST">
-        <button class="say-button">Submit with AJAX POST</button>
-      </form>
-      <p class="text-box"></p>
+    <section class="container">
+      <section class="intro">
+        <h1>Post a Message</h2>
+        <form class="msg-form" action="/chatroom?id=cyf" method="POST">
+          <input class="form-control" type="text" name="message" placeholder="message..." required><br>
+          <input class="btn btn-lg btn-primary" type="submit" value="Submit via standard HTTP POST">
+          <button class="btn btn-lg btn-success say-button">Submit with AJAX POST</button>
+        </form>
+        <h3 class="text-box"></h3>
+      </section>
     </section>
     <script src="/js/send.js"></script>
   </body>
