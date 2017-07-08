@@ -7,11 +7,17 @@ const app = new Express();
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({}));
-app.options("/*", function(req, res, next){
+app.options("/*", (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.header('Access-Control-Allow-Headers', 'Accepts,Content-Type, Authorization, Content-Length, X-Requested-With');
   res.send(200);
+});
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Accepts,Content-Type, Authorization, Content-Length, X-Requested-With');
+  next();
 });
 
 app.get('/chatroom', (req, res, next) => {
