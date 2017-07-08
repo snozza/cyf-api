@@ -39,7 +39,7 @@
         }
       }
     }
-    const url = 'http://localhost:3000/chatroom?id=cyf';
+    const url = '/chatroom?id=cyf';
     request.open('GET', url);
     request.setRequestHeader('Accepts', 'text/plain');
     request.send();
