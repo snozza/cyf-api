@@ -33,11 +33,11 @@
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status === 200) {
-          textBox.innerHTML = request.responseText;
+          textBox.innerText = `Message: ${request.responseText}`;
         } else if (request.status === 404) {
-          textBox.innerHTML = 'There is no message waiting for you :(';
+          textBox.innerText = 'There is no message waiting for you :(';
         } else {
-          textBox.innerHTML = `Something went wrong with your request: ${request.status} ${request.statusText}`;
+          textBox.innerText = `Something went wrong with your request: ${request.status} ${request.statusText}`;
         }
       }
     }

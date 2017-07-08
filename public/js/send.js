@@ -11,10 +11,10 @@
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status === 200) {
-          textBox.innerHTML = request.responseText;
+          textBox.innerText = request.responseText;
         } else {
           console.log(request);
-          textBox.innerHTML = `Something went wrong with your request:
+          textBox.innerText = `Something went wrong with your request:
           ${request.status} ${request.statusText}<br>${request.responseText}`;
         }
       }
