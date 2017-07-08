@@ -33,9 +33,17 @@ app.post('/chatroom', (req, res, next) => {
   if (!id) {
     return res.status(400).send('Must provide a chat ID');
   }
-  const msg = req.body;
+  let msg;
+  if (req.body.message) {
+    msg = req.body.message;
+  } else if (typeof req.body === 'string') {
+    msg = req.body;
+  }
+  if (!msg) {
+    return res.status(400).send(`Can't send an empty message!`);
+  }
   msgs[id] = msg;
-  res.send(msg);
+  res.send(`The following message has been sent to chat ID ${id}: ${msg}`);
 });
 
 app.delete('/chatroom', (req, res, next) => {
@@ -43,6 +51,9 @@ app.delete('/chatroom', (req, res, next) => {
 });
 
 app.use(Express.static(`${__dirname}/public`));
+app.get('/send', (req, res, next) => {
+  res.sendFile(`${__dirname}/send.html`);
+});
 app.get('/', (req, res, next) => {
   res.sendFile(`${__dirname}/index.html`);
 });

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Andrew's Chat</title>
+  </head>
+
+  <body>
+    <section class="intro">
+      <h2>Standard HTML Form - will redirect</h2>
+      <form action="/chatroom?id=cyf" method="POST">
+        Say something to Andrew<br>
+        <input type="text" name="message"><br>
+        <input type="submit" value="Submit via standard HTTP POST">
+        <button class="say-button">Submit with AJAX POST</button>
+      </form>
+      <p class="text-box"></p>
+    </section>
+    <script src="/js/send.js"></script>
+  </body>
+</html>
