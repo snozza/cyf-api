@@ -2,6 +2,12 @@ const Express = require('express');
 const bodyParser = require('body-parser');
 
 const msgs = {};
+const colors = {
+  blue: '#0000ff',
+  black: '#000000',
+  red: '#ff0000',
+  green: '008000'
+};
 
 const app = new Express();
 app.use(bodyParser.json({}));
@@ -18,6 +24,18 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Accepts,Content-Type, Authorization, Content-Length, X-Requested-With');
   next();
+});
+
+app.get('/colors/:colorName', (req, res, next) => {
+  const colorName = req.params.colorName;
+  if (!colorName) {
+    return res.status(404).send('Color name not found');
+  }
+  const color = colors[colorName];
+  if (!color) {
+    return res.status(404).send('Color not found');
+  }
+  res.json({ color });
 });
 
 app.get('/chatroom', (req, res, next) => {
