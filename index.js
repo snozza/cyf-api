@@ -66,6 +66,7 @@ app.post('/chatroom', (req, res, next) => {
 
 app.delete('/chatroom', (req, res, next) => {
   msgs = {};
+  res.status(204).send();
 });
 
 app.use(Express.static(`${__dirname}/public`));
