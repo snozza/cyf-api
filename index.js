@@ -1,5 +1,6 @@
 const Express = require('express');
 const bodyParser = require('body-parser');
+const newsJson = require('./news');
 
 const msgs = {};
 const colors = {
@@ -24,6 +25,14 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Accepts,Content-Type,Authorization,Content-Length,X-Requested-With');
   next();
+});
+
+app.get('/news', (req, res, next) => {
+  res.json(newsJson);
+});
+
+app.post('/contact', (req, res, next) => {
+  res.json({ message: 'OK' });
 });
 
 app.get('/colors/:colorName', (req, res, next) => {
